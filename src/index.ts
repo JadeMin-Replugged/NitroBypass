@@ -1,26 +1,13 @@
-import { Injector, Logger, webpack } from "replugged";
+import LIVE from "./features/live.ts";
+import EMOJI from "./features/emoji.ts";
 
-const inject = new Injector();
-const logger = Logger.plugin("PluginTemplate");
 
-export async function start(): Promise<void> {
-  const typingMod = await webpack.waitForModule<{
-    startTyping: (channelId: string) => void;
-  }>(webpack.filters.byProps("startTyping"));
-  const getChannelMod = await webpack.waitForModule<{
-    getChannel: (id: string) => {
-      name: string;
-    };
-  }>(webpack.filters.byProps("getChannel"));
 
-  if (typingMod && getChannelMod) {
-    inject.instead(typingMod, "startTyping", ([channel]) => {
-      const channelObj = getChannelMod.getChannel(channel);
-      logger.log(`Typing prevented! Channel: #${channelObj?.name ?? "unknown"} (${channel}).`);
-    });
-  }
-}
-
-export function stop(): void {
-  inject.uninjectAll();
-}
+export const start = async (): Promise<void> => {
+	await LIVE.start();
+	await EMOJI.start();
+};
+export const stop = async (): Promise<void> => {
+	await LIVE.stop();
+	await EMOJI.stop();
+};

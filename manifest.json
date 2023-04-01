@@ -1,18 +1,18 @@
 {
-  "id": "dev.replugged.PluginTemplate",
-  "name": "Plugin Template",
-  "description": "A plugin template",
-  "author": {
-    "name": "replugged",
-    "discordID": "1000992611840049192",
-    "github": "replugged-org"
-  },
-  "version": "1.0.0",
-  "updater": {
-    "type": "github",
-    "id": "replugged-org/plugin-template"
-  },
-  "license": "MIT",
-  "type": "replugged-plugin",
-  "renderer": "src/index.ts"
+	"type": "replugged-plugin",
+	"renderer": "src/index.ts",
+	
+	"id": "replugged.JadeMin.NitroBypass",
+	"name": "NitroBypass",
+	"description": "니트로 바이패수",
+	"author": {
+		"name": "KlartNET",
+		"discordID": "840594543291269120",
+		"github": "JadeMin-Replugged"
+	},
+	"version": "0.0.0",
+	"updater": {
+		"type": "github",
+		"id": "JadeMin-Replugged/NitroBypass"
+	}
 }
